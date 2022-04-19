@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import (Categories,
@@ -36,20 +37,32 @@ from .serializers import (CategoriesSerializer,
 @api_view(['GET'])
 def api_overview(request):
     api_urls = {
-        'Categories': 'categories/',
-        'CustomerCustomerDemo': 'customer_customer_demo/',
-        'CustomerDemographics': 'customer_demographics/',
-        'Customers': 'customers/',
-        'EmployeeTerritories': 'employee_territories/',
-        'Employees': 'employees/',
-        'OrderDetails': 'order_details/',
-        'Orders': 'orders/',
-        'Products': 'products/',
-        'Region': 'region/',
-        'Shippers': 'shippers/',
-        'Suppliers': 'suppliers/',
-        'Territories': 'territories/',
-        'UsStates': 'us_states/'
+        'Test Account': {
+            'login': 'testuser',
+            'password': 'testpassword'
+        },
+        'Token': {
+            'get': "api/token/",
+            'verify': 'api/token/verify/',
+            'refresh': 'api/token/verify/'
+
+        },
+        'params': {
+            'Categories': 'categories/',
+            'CustomerCustomerDemo': 'customer_customer_demo/',
+            'CustomerDemographics': 'customer_demographics/',
+            'Customers': 'customers/',
+            'EmployeeTerritories': 'employee_territories/',
+            'Employees': 'employees/',
+            'OrderDetails': 'order_details/',
+            'Orders': 'orders/',
+            'Products': 'products/',
+            'Region': 'region/',
+            'Shippers': 'shippers/',
+            'Suppliers': 'suppliers/',
+            'Territories': 'territories/',
+            'UsStates': 'us_states/'
+        }
     }
     return Response(api_urls)
 
@@ -59,6 +72,7 @@ class CategoriesList(viewsets.ReadOnlyModelViewSet):
     serializer_class = CategoriesSerializer
     filterset_fields = ['category_id', 'category_name', 'description']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class CustomerCustomerDemoList(viewsets.ReadOnlyModelViewSet):
@@ -66,6 +80,7 @@ class CustomerCustomerDemoList(viewsets.ReadOnlyModelViewSet):
     serializer_class = CustomerCustomerDemoSerializer
     filterset_fields = ['customer_id', 'customer_type_id']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class CustomerDemographicsList(viewsets.ReadOnlyModelViewSet):
@@ -73,6 +88,7 @@ class CustomerDemographicsList(viewsets.ReadOnlyModelViewSet):
     serializer_class = CustomerDemographicsSerializer
     filterset_fields = ['customer_type_id', 'customer_desc']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class CustomersList(viewsets.ReadOnlyModelViewSet):
@@ -90,6 +106,7 @@ class CustomersList(viewsets.ReadOnlyModelViewSet):
                         'phone',
                         'fax']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class EmployeeTerritoriesList(viewsets.ReadOnlyModelViewSet):
@@ -97,6 +114,7 @@ class EmployeeTerritoriesList(viewsets.ReadOnlyModelViewSet):
     serializer_class = EmployeeTerritoriesSerializer
     filterset_fields = ['employee_id', 'territory_id']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class EmployeesList(viewsets.ReadOnlyModelViewSet):
@@ -120,6 +138,7 @@ class EmployeesList(viewsets.ReadOnlyModelViewSet):
                         'reports_to',
                         'photo_path']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
@@ -131,6 +150,7 @@ class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
                         'quantity',
                         'discount']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class OrdersList(viewsets.ReadOnlyModelViewSet):
@@ -151,6 +171,7 @@ class OrdersList(viewsets.ReadOnlyModelViewSet):
                         'ship_postal_code',
                         'ship_country']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class ProductsList(viewsets.ReadOnlyModelViewSet):
@@ -167,6 +188,7 @@ class ProductsList(viewsets.ReadOnlyModelViewSet):
                         'reorder_level',
                         'discontinued']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class RegionList(viewsets.ReadOnlyModelViewSet):
@@ -175,6 +197,7 @@ class RegionList(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['region_id',
                         'region_description']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class ShippersList(viewsets.ReadOnlyModelViewSet):
@@ -184,6 +207,7 @@ class ShippersList(viewsets.ReadOnlyModelViewSet):
                         'company_name',
                         'phone']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class SuppliersList(viewsets.ReadOnlyModelViewSet):
@@ -202,6 +226,7 @@ class SuppliersList(viewsets.ReadOnlyModelViewSet):
                         'fax',
                         'homepage']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class TerritoriesList(viewsets.ReadOnlyModelViewSet):
@@ -211,6 +236,7 @@ class TerritoriesList(viewsets.ReadOnlyModelViewSet):
                         'territory_description',
                         'region_id']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
 
 
 class UsStatesList(viewsets.ReadOnlyModelViewSet):
@@ -221,3 +247,4 @@ class UsStatesList(viewsets.ReadOnlyModelViewSet):
                         'state_abbr',
                         'state_region']
     ordering_fields = '__all__'
+    permission_classes = (IsAuthenticated,)
