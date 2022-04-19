@@ -58,18 +58,21 @@ class CategoriesList(viewsets.ReadOnlyModelViewSet):
     queryset = Categories.objects.all()
     serializer_class = CategoriesSerializer
     filterset_fields = ['category_id', 'category_name', 'description']
+    ordering_fields = '__all__'
 
 
 class CustomerCustomerDemoList(viewsets.ReadOnlyModelViewSet):
     queryset = CustomerCustomerDemo.objects.all()
     serializer_class = CustomerCustomerDemoSerializer
     filterset_fields = ['customer_id', 'customer_type_id']
+    ordering_fields = '__all__'
 
 
 class CustomerDemographicsList(viewsets.ReadOnlyModelViewSet):
     queryset = CustomerDemographics.objects.all()
     serializer_class = CustomerDemographicsSerializer
     filterset_fields = ['customer_type_id', 'customer_desc']
+    ordering_fields = '__all__'
 
 
 class CustomersList(viewsets.ReadOnlyModelViewSet):
@@ -86,12 +89,14 @@ class CustomersList(viewsets.ReadOnlyModelViewSet):
                         'country',
                         'phone',
                         'fax']
+    ordering_fields = '__all__'
 
 
 class EmployeeTerritoriesList(viewsets.ReadOnlyModelViewSet):
     queryset = EmployeeTerritories.objects.all()
     serializer_class = EmployeeTerritoriesSerializer
     filterset_fields = ['employee_id', 'territory_id']
+    ordering_fields = '__all__'
 
 
 class EmployeesList(viewsets.ReadOnlyModelViewSet):
@@ -114,6 +119,7 @@ class EmployeesList(viewsets.ReadOnlyModelViewSet):
                         'notes',
                         'reports_to',
                         'photo_path']
+    ordering_fields = '__all__'
 
 
 class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
@@ -124,6 +130,7 @@ class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
                         'unit_price',
                         'quantity',
                         'discount']
+    ordering_fields = '__all__'
 
 
 class OrdersList(viewsets.ReadOnlyModelViewSet):
@@ -143,6 +150,7 @@ class OrdersList(viewsets.ReadOnlyModelViewSet):
                         'ship_region',
                         'ship_postal_code',
                         'ship_country']
+    ordering_fields = '__all__'
 
 
 class ProductsList(viewsets.ReadOnlyModelViewSet):
@@ -158,6 +166,7 @@ class ProductsList(viewsets.ReadOnlyModelViewSet):
                         'units_on_order',
                         'reorder_level',
                         'discontinued']
+    ordering_fields = '__all__'
 
 
 class RegionList(viewsets.ReadOnlyModelViewSet):
@@ -165,6 +174,7 @@ class RegionList(viewsets.ReadOnlyModelViewSet):
     serializer_class = RegionSerializer
     filterset_fields = ['region_id',
                         'region_description']
+    ordering_fields = '__all__'
 
 
 class ShippersList(viewsets.ReadOnlyModelViewSet):
@@ -173,6 +183,7 @@ class ShippersList(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['shipper_id',
                         'company_name',
                         'phone']
+    ordering_fields = '__all__'
 
 
 class SuppliersList(viewsets.ReadOnlyModelViewSet):
@@ -190,6 +201,7 @@ class SuppliersList(viewsets.ReadOnlyModelViewSet):
                         'country',
                         'fax',
                         'homepage']
+    ordering_fields = '__all__'
 
 
 class TerritoriesList(viewsets.ReadOnlyModelViewSet):
@@ -198,6 +210,7 @@ class TerritoriesList(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['territory_id',
                         'territory_description',
                         'region_id']
+    ordering_fields = '__all__'
 
 
 class UsStatesList(viewsets.ReadOnlyModelViewSet):
@@ -207,3 +220,4 @@ class UsStatesList(viewsets.ReadOnlyModelViewSet):
                         'state_name',
                         'state_abbr',
                         'state_region']
+    ordering_fields = '__all__'
