@@ -57,68 +57,153 @@ def api_overview(request):
 class CategoriesList(viewsets.ReadOnlyModelViewSet):
     queryset = Categories.objects.all()
     serializer_class = CategoriesSerializer
+    filterset_fields = ['category_id', 'category_name', 'description']
 
 
 class CustomerCustomerDemoList(viewsets.ReadOnlyModelViewSet):
     queryset = CustomerCustomerDemo.objects.all()
     serializer_class = CustomerCustomerDemoSerializer
+    filterset_fields = ['customer_id', 'customer_type_id']
 
 
 class CustomerDemographicsList(viewsets.ReadOnlyModelViewSet):
     queryset = CustomerDemographics.objects.all()
     serializer_class = CustomerDemographicsSerializer
+    filterset_fields = ['customer_type_id', 'customer_desc']
 
 
 class CustomersList(viewsets.ReadOnlyModelViewSet):
     queryset = Customers.objects.all()
     serializer_class = CustomersSerializer
+    filterset_fields = ['customer_id',
+                        'company_name',
+                        'contact_name',
+                        'contact_title',
+                        'address',
+                        'city',
+                        'region',
+                        'postal_code',
+                        'country',
+                        'phone',
+                        'fax']
 
 
 class EmployeeTerritoriesList(viewsets.ReadOnlyModelViewSet):
     queryset = EmployeeTerritories.objects.all()
     serializer_class = EmployeeTerritoriesSerializer
+    filterset_fields = ['employee_id', 'territory_id']
 
 
 class EmployeesList(viewsets.ReadOnlyModelViewSet):
     queryset = Employees.objects.all()
     serializer_class = EmployeesSerializer
+    filterset_fields = ['employee_id',
+                        'last_name',
+                        'first_name',
+                        'title',
+                        'title_of_courtesy',
+                        'birth_date',
+                        'hire_date',
+                        'address',
+                        'city',
+                        'region',
+                        'postal_code',
+                        'country',
+                        'home_phone',
+                        'extension',
+                        'notes',
+                        'reports_to',
+                        'photo_path']
 
 
 class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
     queryset = OrderDetails.objects.all()
     serializer_class = OrderDetailsSerializer
+    filterset_fields = ['order_id',
+                        'product_id',
+                        'unit_price',
+                        'quantity',
+                        'discount']
 
 
 class OrdersList(viewsets.ReadOnlyModelViewSet):
     queryset = Orders.objects.all()
     serializer_class = OrdersSerializer
+    filterset_fields = ['order_id',
+                        'customer_id',
+                        'employee_id',
+                        'order_date',
+                        'required_date',
+                        'shipped_date',
+                        'ship_via',
+                        'freight',
+                        'ship_name',
+                        'ship_address',
+                        'ship_city',
+                        'ship_region',
+                        'ship_postal_code',
+                        'ship_country']
 
 
 class ProductsList(viewsets.ReadOnlyModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
+    filterset_fields = ['product_id',
+                        'product_name',
+                        'supplier_id',
+                        'category_id',
+                        'quantity_per_unit',
+                        'unit_price',
+                        'units_in_stock',
+                        'units_on_order',
+                        'reorder_level',
+                        'discontinued']
 
 
 class RegionList(viewsets.ReadOnlyModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+    filterset_fields = ['region_id',
+                        'region_description']
 
 
 class ShippersList(viewsets.ReadOnlyModelViewSet):
     queryset = Shippers.objects.all()
     serializer_class = ShippersSerializer
+    filterset_fields = ['shipper_id',
+                        'company_name',
+                        'phone']
 
 
 class SuppliersList(viewsets.ReadOnlyModelViewSet):
     queryset = Suppliers.objects.all()
     serializer_class = SuppliersSerializer
+    filterset_fields = ['supplier_id',
+                        'company_name',
+                        'contact_name',
+                        'contact_title',
+                        'address',
+                        'city',
+                        'region',
+                        'postal_code',
+                        'phone',
+                        'country',
+                        'fax',
+                        'homepage']
 
 
 class TerritoriesList(viewsets.ReadOnlyModelViewSet):
     queryset = Territories.objects.all()
     serializer_class = TerritoriesSerializer
+    filterset_fields = ['territory_id',
+                        'territory_description',
+                        'region_id']
 
 
 class UsStatesList(viewsets.ReadOnlyModelViewSet):
     queryset = UsStates.objects.all()
     serializer_class = UsStatesSerializer
+    filterset_fields = ['state_id',
+                        'state_name',
+                        'state_abbr',
+                        'state_region']
