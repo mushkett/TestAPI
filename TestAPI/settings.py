@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'northwind_test_api',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
