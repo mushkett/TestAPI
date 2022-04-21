@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Orders',
             fields=[
-                ('order_id', models.SmallIntegerField(primary_key=True, serialize=False)),
+                ('order', models.SmallIntegerField(primary_key=True, serialize=False)),
                 ('order_date', models.DateField(blank=True, null=True)),
                 ('required_date', models.DateField(blank=True, null=True)),
                 ('shipped_date', models.DateField(blank=True, null=True)),

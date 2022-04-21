@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
-
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -84,14 +84,21 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'mfcyi7An7N9sOMJE',
         'HOST': 'localhost',
-        'POST': ''
-    }
+        'POST': '',
+        'TEST': {
+            'MIRROR': 'default',
+        },
+    },
+
 }
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_FILTER_BACKENDS': ['rest_framework.filters.OrderingFilter',
+                                'django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',)
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',),
 }
 
 SIMPLE_JWT = {

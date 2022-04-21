@@ -144,8 +144,8 @@ class EmployeesList(viewsets.ReadOnlyModelViewSet):
 class OrderDetailsList(viewsets.ReadOnlyModelViewSet):
     queryset = OrderDetails.objects.all()
     serializer_class = OrderDetailsSerializer
-    filterset_fields = ['order_id',
-                        'product_id',
+    filterset_fields = ['order',
+                        'product',
                         'unit_price',
                         'quantity',
                         'discount']
@@ -157,8 +157,8 @@ class OrdersList(viewsets.ReadOnlyModelViewSet):
     queryset = Orders.objects.all()
     serializer_class = OrdersSerializer
     filterset_fields = ['order_id',
-                        'customer_id',
-                        'employee_id',
+                        'customer',
+                        'employee',
                         'order_date',
                         'required_date',
                         'shipped_date',
@@ -179,8 +179,8 @@ class ProductsList(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductsSerializer
     filterset_fields = ['product_id',
                         'product_name',
-                        'supplier_id',
-                        'category_id',
+                        'supplier',
+                        'category',
                         'quantity_per_unit',
                         'unit_price',
                         'units_in_stock',
