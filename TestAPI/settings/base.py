@@ -73,21 +73,7 @@ WSGI_APPLICATION = 'TestAPI.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 load_dotenv(find_dotenv())
-DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
-#     {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'd9fcfr59k686g8',
-#         'USER': 'ipywmgxrnkdeja',
-#         'PASSWORD': '951c63e0b1d89444cd828ce6aaf269a5bca9d57552c0960cfaeec624b5de40bd',
-#         'HOST': 'ec2-63-35-156-160.eu-west-1.compute.amazonaws.com',
-#         'POST': '',
-#         'TEST': {
-#             'MIRROR': 'default',
-#         },
-#     },
-#
-# }
+
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['rest_framework.filters.OrderingFilter',

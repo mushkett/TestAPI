@@ -14,6 +14,10 @@ ALLOWED_HOSTS = [
 
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
+
+DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
+#
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
