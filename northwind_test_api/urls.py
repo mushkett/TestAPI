@@ -19,6 +19,7 @@ router.register('territories', views.TerritoriesList, basename='Territories')
 router.register('us_states', views.UsStatesList, basename='UsStates')
 
 urlpatterns = [
+    path('', views.api_overview, name='api-overview'),
     path('', include(router.urls)),
-    path('api_overview/', views.api_overview, name='api-overview'),
+
 ]

@@ -9,23 +9,16 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import dj_database_url
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n30x%2$3^9=e01@a4&r1l8k!mep5ds!$esm+r&!&$tcq4fuojd'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -77,20 +70,22 @@ WSGI_APPLICATION = 'TestAPI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'mfcyi7An7N9sOMJE',
-        'HOST': 'localhost',
-        'POST': '',
-        'TEST': {
-            'MIRROR': 'default',
-        },
-    },
-
-}
+load_dotenv(find_dotenv())
+DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
+#     {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd9fcfr59k686g8',
+#         'USER': 'ipywmgxrnkdeja',
+#         'PASSWORD': '951c63e0b1d89444cd828ce6aaf269a5bca9d57552c0960cfaeec624b5de40bd',
+#         'HOST': 'ec2-63-35-156-160.eu-west-1.compute.amazonaws.com',
+#         'POST': '',
+#         'TEST': {
+#             'MIRROR': 'default',
+#         },
+#     },
+#
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['rest_framework.filters.OrderingFilter',
@@ -109,7 +104,7 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': False,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': 'u0-(cihy^v)i7!b0a8&rw#bklyk1dt!97v9rf#%xmpvm*5q!&!',
     'VERIFYING_KEY': None,
     'AUDIENCE': None,
     'ISSUER': None,
@@ -166,6 +161,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
